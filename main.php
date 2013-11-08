@@ -34,7 +34,9 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 			.header h1{font-weight:400;margin:0;}
 			.footer{}
 			.content{padding:25px 0; width:80%; margin:0 auto; text-align: center;}
-			label,input,.error{clear:both;float:left;margin:5px 0;}
+                        label,input,.error{clear:both;float:left;margin:5px 0;}
+                        .hell{padding:10px:background:#921;color:efefef;}
+                        .well{padding:10px:background:#291;color:efefef;}
         </style>
     </head>
     <body>
@@ -56,8 +58,15 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 			  	function(data){
 			  		dataObj = JSON.parse(data);
 			  		console.log(dataObj);
-			  		desc = dataObj.weather[0].description;
-			  		$("#desc").html(desc); 
+                                        desc = dataObj.weather[0].description;
+                                        if(desc.search('rainy')){
+                                            $("h1").addClass('hell');
+                                            $("h1").html("Hell Yes!"); 
+                                        }else{
+                                            $("h1").addClass('well');
+                                            $("h1").html("No!"); 
+                                        }
+                                        $("#desc").html(desc); 
 			  	})
 			}
 			if (navigator.geolocation) {
