@@ -22,6 +22,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 <!doctype html>
 <html lang="en">
     <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta charset="UTF-8">
         <title>Hi</title>
         
@@ -35,15 +36,15 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 			.footer{}
 			.content{padding:25px 0; width:80%; margin:0 auto; text-align: center;}
                         label,input,.error{clear:both;float:left;margin:5px 0;}
-                        .hell{padding:10px:background:#921;color:efefef;}
-                        .well{padding:10px:background:#291;color:efefef;}
+                        .hell{padding:10px;background:#921;color:#efefef;}
+                        .well{padding:10px;background:#291;color:#efefef;}
         </style>
     </head>
     <body>
         <div class="content">
 
-            <h1>Hi</h1>
-            <h2 id="desc"></h2>
+            <h1>...</h1>
+            <h2 id="desc">Wait, I am looking outside.</h2>
            
         </div>
 
@@ -59,7 +60,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 			  		dataObj = JSON.parse(data);
 			  		console.log(dataObj);
                                         desc = dataObj.weather[0].description;
-                                        if(desc.search('rainy')){
+                                        if(desc.search('rainy')>0){
                                             $("h1").addClass('hell');
                                             $("h1").html("Hell Yes!"); 
                                         }else{
