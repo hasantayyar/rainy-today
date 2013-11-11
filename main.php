@@ -24,20 +24,13 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta charset="UTF-8">
-        <title>Hi</title>
+        <title>Is it raining now?</title>
         
         <style>
-            @import url(http://fonts.googleapis.com/css?family=Dosis:300,400&subset=latin,latin-ext);
-			body{font-family:'Dosis', sans-serif;margin:0;padding:0 0 50px;}
-			h1{color:#00BCF6; letter-spacing: 2px;font-family:'Dosis', sans-serif;}
-			.header,.footer{line-height:50px;height:50px;width:100%;}
-			.header h1,.header a{display:inline-block;}
-			.header h1{font-weight:400;margin:0;}
-			.footer{}
-			.content{padding:25px 0; width:80%; margin:0 auto; text-align: center;}
-                        label,input,.error{clear:both;float:left;margin:5px 0;}
-                        .hell{padding:10px;background:#921;color:#efefef;}
-                        .well{padding:10px;background:#291;color:#efefef;}
+		@import url(http://fonts.googleapis.com/css?family=Dosis:300,400&subset=latin,latin-ext);
+		body{font-family:Dosis, sans-serif;margin:0;padding:0 0 50px;}h1{color:#00BCF6;letter-spacing:2px;font-family:Dosis, sans-serif;}.header,.footer{line-height:50px;height:50px;width:100%;}.header h1,.header a{display:inline-block;}.header h1{font-weight:400;margin:0;}.content{width:80%;text-align:center;margin:0 auto;padding:25px 0;}label,input,.error{clear:both;float:left;margin:5px 0;}
+		.hell{padding:10px;background:#921;color:#efefef;}
+		.well{padding:10px;background:#291;color:#efefef;}
         </style>
     </head>
     <body>
@@ -45,26 +38,22 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 
             <h1>...</h1>
             <h2 id="desc">Wait, I am looking outside.</h2>
-           
         </div>
-
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-
         <script>
         $(document).ready(function(){
         	function displayError(){}
 			function displayPosition(position) {
-			  //alert("Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude);
 			  $.post("/",{lat:position.coords.latitude,lon:position.coords.longitude},
 			  	function(data){
 			  		dataObj = JSON.parse(data);
 			  		console.log(dataObj);
                                         desc = dataObj.weather[0].description;
                                         if(desc.search('rainy')>0){
-                                            $("h1").addClass('hell');
+                                            $("body").addClass('hell');
                                             $("h1").html("Hell Yes!"); 
                                         }else{
-                                            $("h1").addClass('well');
+                                            $("body").addClass('well');
                                             $("h1").html("No!"); 
                                         }
                                         $("#desc").html(desc); 
@@ -82,6 +71,17 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 			  alert("Geolocation is not supported by this browser");
 			}
         })
+
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-1301980-38', 'rainy-today.appspot.com');
+  ga('send', 'pageview');
 
 </script>
     </body>
