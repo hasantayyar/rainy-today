@@ -50,10 +50,10 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 			  		console.log(dataObj);
                                         desc = dataObj.weather[0].description;
                                         if(desc.search('rainy')>0){
-                                            $("body").addClass('hell');
+                                            $("body").addClass('hell');$("h1").addClass('hell');
                                             $("h1").html("Hell Yes!"); 
                                         }else{
-                                            $("body").addClass('well');
+                                            $("body").addClass('well');$("h1").addClass('well');
                                             $("h1").html("No!"); 
                                         }
                                         $("#desc").html(desc); 
