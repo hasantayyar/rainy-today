@@ -49,7 +49,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
 			  		dataObj = JSON.parse(data);
 			  		console.log(dataObj);
                                         desc = dataObj.weather[0].description;
-                                        if(desc.search('rainy')>0){
+                                        if(desc.search('rain')>0){
                                             $("body").addClass('hell');$("h1").addClass('hell');
                                             $("h1").html("Hell Yes!"); 
                                         }else{
